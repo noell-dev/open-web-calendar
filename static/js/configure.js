@@ -119,6 +119,16 @@ function showEventError(error) {
 function disableLoader() {
     var loader = document.getElementById("loader");
     loader.classList.add("hidden");
+    var state = scheduler.getState();
+    var date_to_str = scheduler.templates[state.mode + "_date"];
+    var datePlaceholder = document.getElementById("datePlaceholder");
+    var startDate = state.min_date;
+
+    if (state.mode == "month") {
+        startDate = state.date;
+    }
+
+    datePlaceholder.innerHTML = date_to_str(startDate, state.max_date, state.mode);
 }
 
 function setLoader() {
