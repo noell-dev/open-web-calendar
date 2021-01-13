@@ -116,8 +116,7 @@
                     var startDate = state.min_date;
                     
                     if (state.mode == "month") {
-                        startDate.setMonth(state.date.getMonth());
-                        startDate.setDate(state.date.getDate());
+                        startDate = state.date;
                     }
                     
                     datePlaceholder.innerHTML = date_to_str(startDate, state.max_date, state.mode);
