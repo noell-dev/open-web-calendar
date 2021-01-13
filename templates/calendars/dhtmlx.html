@@ -108,8 +108,7 @@
             window.addEventListener("DOMContentLoaded", function(){
                 scheduler.xy.nav_height = 0;
 
-
-                scheduler.attachEvent("onViewChange", function(){
+                function updateDate(){
                     var state = scheduler.getState();
                     var date_to_str = scheduler.templates[state.mode + "_date"];
                     var datePlaceholder = document.getElementById("datePlaceholder");
@@ -120,7 +119,11 @@
                     }
                     
                     datePlaceholder.innerHTML = date_to_str(startDate, state.max_date, state.mode);
-                });
+                }
+
+                updateDate();
+                scheduler.attachEvent("onViewChange", updateDate());
+
                     
      });
      function changeView(viewName){
